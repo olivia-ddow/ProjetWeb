@@ -1,26 +1,38 @@
 <template>
-  <img alt="Vue logo" src="./assets/logo.png">
-  <HelloWorld msg="Welcome to Your Vue.js App"/>
+  
+  <header>
+		<h1><strong>BOTW</strong>Database</h1>
+    
+  </header>
+  <body>
+
+    <router-view></router-view>
+    <!--<CreaturesGallery></CreaturesGallery>-->
+    <!-- <MonstersGallery></MonstersGallery>-->
+  </body>
 </template>
 
 <script>
-import HelloWorld from './components/HelloWorld.vue'
+//import CreaturesGallery from './components/CreaturesGallery.vue'
+//import MonstersGallery from './components/MonstersGallery.vue'
 
 export default {
-  name: 'App',
+  name: 'BotwApp',
   components: {
-    HelloWorld
+    //MonstersGallery,
+    //CreaturesGallery
   }
+
 }
+
+
+
+
+  
 </script>
 
 <style>
 #app {
-  font-family: Avenir, Helvetica, Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  text-align: center;
-  color: #2c3e50;
-  margin-top: 60px;
+
 }
 </style>
