@@ -1,38 +1,39 @@
 <template>
   
   <header>
-		<h1><strong>BOTW</strong>Database</h1>
-    
+		<h1>BOTWDatabase</h1>
   </header>
   <body>
-
     <router-view></router-view>
-    <!--<CreaturesGallery></CreaturesGallery>-->
-    <!-- <MonstersGallery></MonstersGallery>-->
   </body>
 </template>
 
 <script>
-//import CreaturesGallery from './components/CreaturesGallery.vue'
-//import MonstersGallery from './components/MonstersGallery.vue'
 
 export default {
-  name: 'BotwApp',
-  components: {
-    //MonstersGallery,
-    //CreaturesGallery
-  }
-
+  name: 'BotwApp'
 }
-
-
-
-
   
 </script>
 
 <style>
-#app {
 
+@font-face {
+    font-family: "Hylian Serif";
+    src: url(assets/fonts/HyliaSerifBeta-Regular.otf);
 }
+
+@font-face {
+    font-family: "Sheikah Glyphs";
+    src: url(assets/fonts/BotW_Sheikah.ttf);
+    src: url(assets/fonts/BotW_Sheikah_Bold.ttf);
+}
+
+body{
+  box-sizing: border-box;
+  background-color: rgb(24, 22, 29) /*#1c2d36*/;
+  background-image: url("assets/images/bg.png");
+  color: #00e1ff;
+}
+
 </style>

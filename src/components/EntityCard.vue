@@ -2,7 +2,8 @@
     <div class="entity-card">
         <img class="picture" v-bind:src="picture"/>
         <div>
-        <h2 class="name">{{name}}</h2>
+        <h2 class="name" >{{name}}</h2>
+        <h2 class="id">{{id}}</h2>
         </div>  
     </div>
 </template>
@@ -10,8 +11,10 @@
 <script>
     export default {
         name: 'EntityCard',
+        hover: '',
         props: {
             name: {type: String, required: true},
+            id: {type: Number, required: true},
             picture: {type:String, required: true}
         },        
     }  
@@ -19,19 +22,49 @@
 
 <style scoped>
     .entity-card > .picture {
-        width:10em;
-        height:10em;
-        text-align: center;
+        width:12em;
+        height:12em;
+        margin-left: auto;
+        margin-right: auto  ;
+        border: 3px solid rgb(42, 42, 42);
+        outline: 3px solid rgb(42, 42, 42);
+        outline-offset: -9px;
+        opacity: 53%;
     }
+    .entity-card > .picture:hover {
+        border: 3px solid #00e1ff;
+        box-shadow: 0 0 .2rem #fff, 
+                    0 0 .2rem #fff, 
+                    0 0 1rem #00e1ff, 
+                    inset 0 0 3rem #00e1ff;
+        outline: 3px solid #00e1ff;
+        opacity: 100%;
+    }
+
+    
     .entity-card {
+        position: relative;
         display: flex;
-        flex: 0 1 20%;
+        flex: 0 1 25%;
         flex-direction: column;
-        margin: 10px;
+        margin: 20px;
+        color: #00e1ff;
+
     }
-    .name {
-        text-align: center;
+
+    .name{
         font-size: 20px;
-        color:rgb(47, 73, 47);
+        text-align: center;
+        text-shadow: 0 0 10px currentColor, 0 0 20px currentColor;
     }
+
+    .id{
+        position: absolute;
+        bottom: 18%;
+        left: 5%;
+        color: #01b4ccc4;
+        text-shadow: none;
+    }
+
+    
 </style>
