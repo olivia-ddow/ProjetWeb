@@ -55,15 +55,16 @@
     }
 
     .entity-card:hover .name {
-        font-family: 'Hylian Serif';
+        font-family: 'RocknRollOne';
+        font-size: 1.1em;
         color: #00e1ff;
         text-shadow: 0 0 10px currentColor, 0 0 20px currentColor;
     }
 
     .name{
-        font-size: 20px;
         text-align: center;
         font-family: 'Sheikah Glyphs';
+        font-size: 1.3em;
         color: grey;
     }
 

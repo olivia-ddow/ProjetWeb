@@ -102,12 +102,6 @@ import { getAllData } from '@/services/botwAPI.js'
         margin-right: 10%;
     }
 
-    h2 {
-        text-align: center;
-        font-size: 2em;
-        color: rgb(42, 42, 42);
-    }
-
     a { 
         text-decoration: none; 
     }

@@ -29,6 +29,12 @@ export default {
     
 }
 
+@font-face {
+    font-family: "RocknRollOne";
+    src: url(assets/fonts/RocknRollOne-Regular.ttf);
+    
+}
+
 body{
   box-sizing: border-box;
   background-color: rgb(24, 22, 29) /*#1c2d36*/;
