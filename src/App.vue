@@ -26,7 +26,7 @@ export default {
 @font-face {
     font-family: "Sheikah Glyphs";
     src: url(assets/fonts/BotW_Sheikah.ttf);
-    src: url(assets/fonts/BotW_Sheikah_Bold.ttf);
+    
 }
 
 body{
