@@ -1,17 +1,21 @@
 <template>
-  
-  <header>
-		<h1>BOTWDatabase</h1>
-  </header>
   <body>
+    <TheHeader></TheHeader>
     <router-view></router-view>
+    <TheFooter></TheFooter>
   </body>
 </template>
 
 <script>
+import HeaderView from './components/HeaderView.vue'
+import FooterView from './components/FooterView.vue'
 
 export default {
-  name: 'BotwApp'
+  name: 'BotwApp',
+  components: {
+    'TheHeader': HeaderView,
+    'TheFooter': FooterView
+  }
 }
   
 </script>
@@ -24,7 +28,7 @@ export default {
 }
 
 @font-face {
-    font-family: "Sheikah Glyphs";
+    font-family:"Sheikah Glyphs";
     src: url(assets/fonts/BotW_Sheikah.ttf);
     
 }
@@ -40,6 +44,8 @@ body{
   background-color: rgb(24, 22, 29) /*#1c2d36*/;
   background-image: url("assets/images/bg.png");
   color: #00e1ff;
+  font-family: 'RocknRollOne';
+  font-style: italic;
 }
 
 </style>

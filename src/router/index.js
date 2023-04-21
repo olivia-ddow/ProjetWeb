@@ -1,7 +1,7 @@
 import {createRouter, createWebHistory} from 'vue-router'
 
 const routes = [
-    { path: '/', component: ()=>import('@/components/EntitiesGallery.vue')},
+    { path: '/', name: 'gallery', component: ()=>import('@/components/EntitiesGallery.vue')},
     { path: '/:filter/:name', name: 'entity', component: ()=>import('@/components/EntitySingle.vue')}
 ]
 

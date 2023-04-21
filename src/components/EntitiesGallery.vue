@@ -1,20 +1,22 @@
 <template>
-
     <div class="gallery-options">
-        <input type="text" v-model="search" placeholder="Search an entity">
         <div class="categories" v-for="category in categories" :key="category">
-            <button v-if="category !== 'creatures' && category !== 'food'" @click="setFilter(this.entitiesData.data[category])">{{ category }}</button>
-            <button v-else-if="category === 'creatures'" @click="setFilter(this.entitiesData.data.creatures.non_food)">{{ category }}</button>
-            <button v-else @click="setFilter(this.entitiesData.data.creatures.food)">{{ category }}</button>        
+            <button v-if="category !== 'creatures' && category !== 'food'" @click="setFilter(this.entitiesData.data[category])">{{  capitalizeFirstLetter(category) }}</button>
+            <button v-else-if="category === 'creatures'" @click="setFilter(this.entitiesData.data.creatures.non_food)">{{ capitalizeFirstLetter(category) }}</button>
+            <button v-else @click="setFilter(this.entitiesData.data.creatures.food)">{{ capitalizeFirstLetter(category) }}</button>        
         </div>
-        <select v-model="EntitySortType" id="entity-sort">
-            <option value="IDLow">ID ascending</option>
-            <option value="IDHigh">ID descending</option>
-            <option value="AZName">A to Z names</option>
-            <option value="ZAName">Z to A names</option>
-        </select>
     </div>
 
+    <div class="sub-filter">
+            <select v-model="EntitySortType" id="entity-sort">
+                <option value="IDLow">ID ascending</option>
+                <option value="IDHigh">ID descending</option>
+                <option value="AZName">A to Z names</option>
+                <option value="ZAName">Z to A names</option>
+            </select>
+        
+        <input type="text" v-model="search" placeholder="Search an entity in the category">
+    </div>
 
     
     <div class="entities-gallery">   
@@ -51,6 +53,14 @@ import { getAllData } from '@/services/botwAPI.js'
                 return data
             }
         },
+        watch: {
+            search: function(newSearch) {
+                localStorage.setItem("search", newSearch)
+            },
+            EntitySortType: function(newEntitySortType) {
+                localStorage.setItem("EntitySortType", newEntitySortType)
+            }
+        },
         data(){
             return {
                 monsters:{},
@@ -61,9 +71,10 @@ import { getAllData } from '@/services/botwAPI.js'
                 materials:{},
                 currentFilter: {},
                 entitiesData:{},
+                myCategory:"",
                 categories: ["monsters", "creatures", "food", "equipment", "treasure", "materials"],
-                EntitySortType: "IDLow",
-                search: ""
+                search: localStorage.getItem("search") || "",
+                EntitySortType: localStorage.getItem("EntitySortType") || "IDLow"
             }
         },
         methods: {
@@ -76,7 +87,6 @@ import { getAllData } from '@/services/botwAPI.js'
             },
             setFilter: function(filter) {
                 this.currentFilter = filter
-                console.log(this.currentFilter)
             },
             async retrieveEntitiesData() {              
                 this.entitiesData = await getAllData() 
@@ -93,7 +103,7 @@ import { getAllData } from '@/services/botwAPI.js'
 </script>
 
 <style scoped>
-    .entities-gallery{
+    .entities-gallery, .gallery-options, .sub-filter{
         display: flex;
         flex-wrap: wrap;
         justify-content: center;
@@ -102,7 +112,72 @@ import { getAllData } from '@/services/botwAPI.js'
         margin-right: 10%;
     }
 
+    .gallery-options, .sub-filter{
+        justify-content: space-evenly;
+    }
+
+    .gallery-options {
+        border-bottom: 2px solid #00e1ff;
+        box-shadow:  0 1rem 1rem -1rem #00e1ff;
+        padding-bottom: 1.2em;
+    }
+
     a { 
         text-decoration: none; 
     }
+    .categories button{
+        color: grey;
+        border: none;
+        background-color: transparent;
+        transition: color 0.2s ease-in;
+        font-family: 'RocknRollOne';
+        font-size: 1.5em;
+    }
+    .categories button:hover {
+        color: #00e1ff;
+        text-shadow: 0 0 10px currentColor, 0 0 20px currentColor;
+        cursor: pointer;
+            
+    }
+    .sub-filter select{
+        background-color: rgba(0,0,0,.5);
+        color: #00e1ff;
+        border: 1px solid #00e1ff;
+        outline: 1px solid #00e1ff;
+        outline-offset: 8px;
+        padding: .8em;
+        font-family: 'RocknRollOne';
+    }
+
+    .sub-filter option{
+        background-color: black;
+        color: #00e1ff;
+        font-family: Helvetica;
+    }
+
+    .sub-filter input {
+        background-color: rgba(0,0,0,.25);
+        color: #00e1ff;
+        font-family:'RocknRollOne'; 
+        border: none;
+        border-bottom: 2px solid #00e1ff;
+        box-shadow:  0 1rem 1rem -1rem #00e1ff;
+        width: 20em;
+    }
+
+
+
+    /***Phone ***/
+    @media (max-width: 480px){
+        .categories button{
+                font-size: 1.2em;
+        }
+        .sub-filter{
+                margin-top: 10%;
+        }        
+        .sub-filter input{
+                margin-top: 10%;
+        }
+    }
+
 </style>

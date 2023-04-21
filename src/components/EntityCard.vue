@@ -3,7 +3,7 @@
         <img class="picture" v-bind:src="picture"/>
         <div>
         <h2 class="name"><span>{{hover}}</span></h2>
-        <h2 class="id">{{id}}</h2>
+        <h2 class="id">{{padId}}</h2>
         </div>  
     </div>
 </template>
@@ -11,6 +11,12 @@
 <script>
     export default {
         name: 'EntityCard',
+        computed: {
+            padId() {
+                let newId = ('000'+this.id).slice(-3);
+                return newId;
+            }
+        },
         data(){
             return{
                 hover: 'Entity',
@@ -20,7 +26,7 @@
             name: {type: String, required: true},
             id: {type: Number, required: true},
             picture: {type:String, required: true}
-        },        
+        }      
     }  
 </script>
 
@@ -56,9 +62,10 @@
 
     .entity-card:hover .name {
         font-family: 'RocknRollOne';
+        font-style: italic;
         font-size: 1.1em;
         color: #00e1ff;
-        text-shadow: 0 0 10px currentColor, 0 0 20px currentColor;
+        text-shadow: 0 0 10px #00e1ff, 0 0 20px #00e1ff;
     }
 
     .name{
