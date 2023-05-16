@@ -1,5 +1,5 @@
 <template>
-    <div class="gallery-options">
+    <div class="galleryOptions">
         <div class="categories" v-for="category in categories" :key="category">
             <button v-if="category !== 'creatures' && category !== 'food'" @click="setFilter(this.entitiesData.data[category])">{{  capitalizeFirstLetter(category) }}</button>
             <button v-else-if="category === 'creatures'" @click="setFilter(this.entitiesData.data.creatures.non_food)">{{ capitalizeFirstLetter(category) }}</button>
@@ -7,7 +7,7 @@
         </div>
     </div>
 
-    <div class="sub-filter">
+    <div class="subFilter">
             <select v-model="EntitySortType" id="entity-sort">
                 <option value="IDLow">ID ascending</option>
                 <option value="IDHigh">ID descending</option>
@@ -19,7 +19,7 @@
     </div>
 
     
-    <div class="entities-gallery">   
+    <div class="gallery">   
         <router-link v-for="(entity, index) in filteredEntities" :key="index" :to="{name: 'entity', params: {filter: entity?.category, name: entity?.name}}">
             <EntityCard 
             :id="entity?.id" 
@@ -103,7 +103,7 @@ import { getAllData } from '@/services/botwAPI.js'
 </script>
 
 <style scoped>
-    .entities-gallery, .gallery-options, .sub-filter{
+    .gallery, .galleryOptions, .subFilter{
         display: flex;
         flex-wrap: wrap;
         justify-content: center;
@@ -112,11 +112,11 @@ import { getAllData } from '@/services/botwAPI.js'
         margin-right: 10%;
     }
 
-    .gallery-options, .sub-filter{
+    .galleryOptions, .subFilter{
         justify-content: space-evenly;
     }
 
-    .gallery-options {
+    .galleryOptions {
         border-bottom: 2px solid #00e1ff;
         box-shadow:  0 1rem 1rem -1rem #00e1ff;
         padding-bottom: 1.2em;
@@ -139,7 +139,7 @@ import { getAllData } from '@/services/botwAPI.js'
         cursor: pointer;
             
     }
-    .sub-filter select{
+    .subFilter select{
         background-color: rgba(0,0,0,.5);
         color: #00e1ff;
         border: 1px solid #00e1ff;
@@ -149,13 +149,13 @@ import { getAllData } from '@/services/botwAPI.js'
         font-family: 'RocknRollOne';
     }
 
-    .sub-filter option{
+    .subFilter option{
         background-color: black;
         color: #00e1ff;
         font-family: Helvetica;
     }
 
-    .sub-filter input {
+    .subFilter input {
         background-color: rgba(0,0,0,.25);
         color: #00e1ff;
         font-family:'RocknRollOne'; 
@@ -172,10 +172,10 @@ import { getAllData } from '@/services/botwAPI.js'
         .categories button{
                 font-size: 1.2em;
         }
-        .sub-filter{
+        .subFilter{
                 margin-top: 10%;
         }        
-        .sub-filter input{
+        .subFilter input{
                 margin-top: 10%;
         }
     }

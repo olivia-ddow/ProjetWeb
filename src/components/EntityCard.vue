@@ -1,5 +1,5 @@
 <template>
-    <div class="entity-card" @mouseover="hover=name" @mouseleave="hover='Entity'">
+    <div class="entityCard" @mouseover="hover=name" @mouseleave="hover='Entity'">
         <img class="picture" v-bind:src="picture"/>
         <div>
         <h2 class="name"><span>{{hover}}</span></h2>
@@ -31,7 +31,7 @@
 </script>
 
 <style scoped>
-    .entity-card > .picture {
+    .entityCard > .picture {
         width:12em;
         height:12em;
         margin-left: auto;
@@ -41,7 +41,7 @@
         outline-offset: -9px;
         opacity: 53%;
     }
-    .entity-card:hover > .picture {
+    .entityCard:hover > .picture {
         border: 3px solid #00e1ff;
         box-shadow: 0 0 .2rem #fff, 
                     0 0 .2rem #fff, 
@@ -52,7 +52,7 @@
     }
 
     
-    .entity-card {
+    .entityCard {
         position: relative;
         display: flex;
         flex: 0 1 25%;
@@ -60,7 +60,7 @@
         margin: 20px;
     }
 
-    .entity-card:hover .name {
+    .entityCard:hover .name {
         font-family: 'RocknRollOne';
         font-style: italic;
         font-size: 1.1em;

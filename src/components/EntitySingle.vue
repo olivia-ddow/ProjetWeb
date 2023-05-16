@@ -1,5 +1,5 @@
 <template>  
-    <div class="to-gallery">
+    <div class="toGallery">
         <router-link :to="{name: 'gallery'}">
             <a value="Return to Gallery"><i class="arrow"></i>Return to Gallery</a>
         </router-link>
@@ -95,7 +95,7 @@ export default {
 <style scoped>
 
 
-    .to-gallery{
+    .toGallery{
         margin-top: 3%;
         margin-left: 2%;
     }
@@ -113,11 +113,11 @@ export default {
         color:grey;
     }
 
-    .to-gallery:hover a{
+    .toGallery:hover a{
         color: #00e1ff;
     }
 
-    .to-gallery:hover .arrow{
+    .toGallery:hover .arrow{
         border: solid #00e1ff;
         border-width: 0 3px 3px 0;
         display: inline-block;
@@ -202,7 +202,7 @@ export default {
                 
         }
 
-        .to-gallery {
+        .toGallery {
             margin-top: 8%;
         }
 
