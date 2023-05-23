@@ -8,7 +8,7 @@
     </div>
 
     <div class="subFilter">
-            <select v-model="EntitySortType" id="entity-sort">
+            <select v-model="entitySortType" id="entity-sort">
                 <option value="IDLow">ID ascending</option>
                 <option value="IDHigh">ID descending</option>
                 <option value="AZName">A to Z names</option>
@@ -41,11 +41,11 @@ import { getAllData } from '@/services/botwAPI.js'
             filteredEntities() {
                 const filterFunc = (a) => a.name.toLowerCase().includes(this.search.toLowerCase())
                 let data = Object.values(this.currentFilter).filter(filterFunc)
-                if (this.EntitySortType === "IDLow"){
+                if (this.entitySortType === "IDLow"){
                     data = data.sort((a, b) => a.id - b.id)
-                } else if (this.EntitySortType === "IDHigh"){
+                } else if (this.entitySortType === "IDHigh"){
                     data = data.sort((a, b) => b.id - a.id)
-                } else if (this.EntitySortType === "AZName"){
+                } else if (this.entitySortType === "AZName"){
                     data = data.sort((a, b) => a.name.localeCompare(b.name))
                 } else {
                     data = data.sort((a, b) => b.name.localeCompare(a.name))
@@ -57,8 +57,8 @@ import { getAllData } from '@/services/botwAPI.js'
             search: function(newSearch) {
                 localStorage.setItem("search", newSearch)
             },
-            EntitySortType: function(newEntitySortType) {
-                localStorage.setItem("EntitySortType", newEntitySortType)
+            entitySortType: function(newEntitySortType) {
+                localStorage.setItem("entitySortType", newEntitySortType)
             }
         },
         data(){
@@ -74,7 +74,7 @@ import { getAllData } from '@/services/botwAPI.js'
                 myCategory:"",
                 categories: ["monsters", "creatures", "food", "equipment", "treasure", "materials"],
                 search: localStorage.getItem("search") || "",
-                EntitySortType: localStorage.getItem("EntitySortType") || "IDLow"
+                entitySortType: localStorage.getItem("entitySortType") || "IDLow"
             }
         },
         methods: {
